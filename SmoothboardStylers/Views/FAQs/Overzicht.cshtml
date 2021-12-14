@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SmoothboardStylers.Models.FAQ>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Veel gestelde vragen en antwoorden</h1>
+<div id="accordion">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header" id="heading-@Html.DisplayFor(Item => i)">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#question-@Html.DisplayFor(Item => i)" aria-expanded="true" aria-controls="question-@Html.DisplayFor(Item => i)">
+                        @Html.DisplayFor(modelItem => item.Vraag)
+                    </button>
+                </h5>
+            </div>
+        </div>
+        <div id="question-@Html.DisplayFor(Item => i)" class="collapse show" aria-labelledby="heading-@Html.DisplayFor(Item => i)" data-parent="#accordion">
+            <div class="card-body">
+                @Html.DisplayFor(modelItem => item.Antwoord)
+            </div>
+        </div>
+        i++;
+    }
+</div>

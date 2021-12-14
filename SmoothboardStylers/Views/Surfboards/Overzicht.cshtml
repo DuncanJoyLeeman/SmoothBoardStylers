@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SmoothboardStylers.Models.Surfboard>
+
+@{
+    ViewData["Title"] = "Overzicht";
+}
+
+<h1 class="text-center display-4 rock_salt">SmoothboardStylers Surfboard overzicht</h1>
+<div class="d-flex">
+    <div class="">
+        @foreach (var item in Model)
+        {
+            <div class="card float-left" style="width: 50%">
+                <a class="text-center img-top" asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top" style="max-height: 200px; width: auto; max-width: 100%;" src="@Html.DisplayFor(modelItem => item.FotoUrl)" /></a>
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Naam)</h5>
+                    <p class="card-text">@Html.DisplayNameFor(model => model.Prijs): €@Html.DisplayFor(modelItem => item.Prijs)</p>
+                    <p class="card-text">@Html.DisplayNameFor(model => model.Materiaal): @Html.DisplayFor(modelItem => item.Materiaal.Naam)</p>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Naar pagina</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

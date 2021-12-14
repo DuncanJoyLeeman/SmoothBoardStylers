@@ -1,0 +1,17 @@
+﻿<!-- Interesse formulier -->
+<div class="col-8 p-0">
+    <p>Geinteresseerd in dit board? Geef uw e-mail adres door en wij nemen zo spoedig mogelijk contact met u op.</p>
+    <form asp-action="CreateFromDetails" asp-controller="Interesses">
+        <input type="hidden" name="SurfboardId" value="@Model.Id" />
+        <div class="input-group">
+            <input type="email" class="form-control" name="Email" placeholder="e-mail adres">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Versturen</button>
+            </div>
+        </div>
+    </form>
+    @if (TempData["InteresseCreated"] != null)
+    {
+        <p>Bedankt! Uw aanvraag is doorgegeven en we nemen snel contact met u op</p>
+    }
+</div>

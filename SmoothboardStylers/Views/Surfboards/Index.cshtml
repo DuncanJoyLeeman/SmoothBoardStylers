@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SmoothboardStylers.Models.Surfboard>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prijs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materiaal)
+            </th>
+            <th>Opties</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a>
+</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beschrijving)
+            </td>
+            <td>
+                €@Html.DisplayFor(modelItem => item.Prijs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FotoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materiaal.Naam)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-wrench"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="text-danger bi bi-x-circle-fill"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

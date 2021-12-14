@@ -1,0 +1,54 @@
+﻿@model SmoothboardStylers.Models.Surfboard
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Surfboard</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Naam" class="control-label"></label>
+                <input asp-for="Naam" class="form-control" />
+                <span asp-validation-for="Naam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Beschrijving" class="control-label"></label>
+                <textarea asp-for="Beschrijving" class="form-control"></textarea>
+                <span asp-validation-for="Beschrijving" class="text-danger"></span>
+            </div>
+            <label asp-for="Prijs" class="control-label"></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">€</span>
+                </div>
+                <input asp-for="Prijs" asp-format="{0:C}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FotoUrl" class="control-label"></label>
+                <input asp-for="FotoUrl" class="form-control" />
+                <span asp-validation-for="FotoUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MateriaalId" class="control-label"></label>
+                <select asp-for="MateriaalId" class="form-control" asp-items="ViewBag.MateriaalId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
